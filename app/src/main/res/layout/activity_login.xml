@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="24dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/signIn_In_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập"
+            style="@style/SignChoosing"/>
+
+        <TextView
+            android:id="@+id/signUp_In_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            style="@style/SignUnChoosing"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="36dp">
+
+        <EditText
+            android:id="@+id/username_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:hint="Tên đăng nhập"/>
+
+        <EditText
+            android:id="@+id/password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="36dp"
+            android:layout_marginTop="24dp"
+            android:hint="Mật khẩu"/>
+        <Button
+            android:id="@+id/signIn_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textSize="25dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_background"
+            android:text="Đăng nhập"/>
+        <TextView
+            android:id="@+id/didnt_have_account_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:textSize="20dp"
+            android:text="Chưa có tài khoản?"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="24dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/signIn_Up_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập"
+            style="@style/SignUnChoosing"/>
+
+        <TextView
+            android:id="@+id/signUp_Up_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            style="@style/SignChoosing"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="36dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/usernameSignUp_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:hint="Tên đăng nhập"/>
+        <EditText
+            android:id="@+id/fullNameSignUp_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:hint="Họ và tên"/>
+        <EditText
+            android:id="@+id/emailSignUp_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:hint="E-mail"/>
+        <EditText
+            android:id="@+id/passwordSignUp_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:hint="Mật khẩu"/>
+
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textSize="25dp"
+            android:layout_gravity="center"
+            android:text="Đăng ký"
+            android:background="@drawable/button_background"/>
+
+        <TextView
+            android:id="@+id/hadAccount_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Đã có tài khoản?"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>
