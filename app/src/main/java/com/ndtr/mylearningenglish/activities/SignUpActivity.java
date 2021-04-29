@@ -1,5 +1,6 @@
 package com.ndtr.mylearningenglish.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,13 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
+import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
 import com.ndtr.mylearningenglish.models.User;
-import com.ndtr.mylearningenglish.models.UserDatabaseHandler;
+
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText usernameEditText;
@@ -24,7 +30,6 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView hadAccountTextView;
 
 
-    private UserDatabaseHandler userDBHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,16 +44,11 @@ public class SignUpActivity extends AppCompatActivity {
         addButton = findViewById(R.id.add_btn);
 
 
-        userDBHandler = new UserDatabaseHandler(this);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(signUp()){
-                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-
+                signUp();
             }
         });
 
@@ -61,26 +61,39 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private boolean signUp() {
-        String username = usernameEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String fullName = fullNameEditText.getText().toString();
-        String email = emailEditText.getText().toString();
+    private void signUp() {
+        String username = usernameEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+        String fullName = fullNameEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
 
         if (username.isEmpty() || password.isEmpty() || fullName.isEmpty() || email.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-            return false;
         }
 
-        User user = userDBHandler.getUser(username);
-        if ((user!= null)) {
-            Toast.makeText(this, "Tên đăng nhập đã tồn tại!", Toast.LENGTH_SHORT).show();
-            return false;
-        } else {
-            User newUser = new User(username, password, fullName, email);
-            userDBHandler.addUser(newUser);
-            Toast.makeText(this, "Tạo tài khoản thành công!", Toast.LENGTH_SHORT).show();
-            return true;
-        }
+
+        DatabaseReference users = FirebaseQuery.firebaseDatabase.getReference(FirebaseQuery.USERS).child(username);
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue()!= null) {
+                    Toast.makeText(SignUpActivity.this, "Tên đăng nhập đã tồn tại!", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    User newUser = new User(username, password, fullName, email);
+                    FirebaseQuery.firebaseDatabase.getReference(FirebaseQuery.USERS).child(username).setValue(newUser);
+
+                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(SignUpActivity.this, "Tạo tài khoản thành công!", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

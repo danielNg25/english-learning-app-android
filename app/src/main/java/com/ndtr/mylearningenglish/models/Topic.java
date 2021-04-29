@@ -1,0 +1,41 @@
+package com.ndtr.mylearningenglish.models;
+
+import java.util.List;
+
+public class Topic {
+    private String topicName;
+    private List<String> wordList;
+    private String description;
+
+    public Topic(){}
+
+    public Topic(String topicName, List<String> wordList, String description) {
+        this.topicName = topicName;
+        this.wordList = wordList;
+        this.description = description;
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
+    public List<String> getWordList() {
+        return wordList;
+    }
+
+    public void setWordList(List<String> wordList) {
+        this.wordList = wordList;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}

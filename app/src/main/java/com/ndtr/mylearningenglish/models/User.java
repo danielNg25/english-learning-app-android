@@ -1,13 +1,16 @@
 package com.ndtr.mylearningenglish.models;
 
-import android.net.Uri;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+@IgnoreExtraProperties
 public class User {
-    private int id;
+
     private String userName;
     private String password;
     private String fullName;
     private String email;
+
+    public User(){}
 
     public User(String userName, String password, String fullName, String email){
         this.userName = userName;
@@ -16,13 +19,7 @@ public class User {
         this.email = email;
     }
 
-    public User(int id, String userName, String password, String fullName, String email){
-        this.userName = userName;
-        this.password = password;
-        this.id = id;
-        this.fullName = fullName;
-        this.email = email;
-    }
+
 
     public boolean isEmpty(){
         if (userName.isEmpty()||password.isEmpty()){
@@ -31,13 +28,7 @@ public class User {
         return true;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;

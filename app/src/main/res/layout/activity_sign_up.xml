@@ -55,7 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24dp"
-            android:hint="Mật khẩu"/>
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"/>
 
 
         <Button

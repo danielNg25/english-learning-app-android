@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.view.View;
 
 import com.ndtr.mylearningenglish.R;
+import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
 
 public class SignInSuccessfulActivity extends AppCompatActivity {
     private TextView fullNameTextView;
@@ -22,7 +23,7 @@ public class SignInSuccessfulActivity extends AppCompatActivity {
         String fullName = intent.getStringExtra("fullName");
 
         fullNameTextView = findViewById(R.id.fullNameSignInSuccessful_tv);
-        fullNameTextView.setText(fullName);
+        fullNameTextView.setText(FirebaseQuery.user.getFullName());
 
         logOutBtn = findViewById(R.id.logOut_btn);
         logOutBtn.setOnClickListener(new View.OnClickListener() {

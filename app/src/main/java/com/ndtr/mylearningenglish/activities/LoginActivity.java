@@ -1,5 +1,6 @@
 package com.ndtr.mylearningenglish.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,16 +11,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
+import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
 import com.ndtr.mylearningenglish.models.User;
-import com.ndtr.mylearningenglish.models.UserDatabaseHandler;
+
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button signInButton;
-    private UserDatabaseHandler userDBHandler;
     private TextView signUpTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,49 +39,60 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setVisibility(View.VISIBLE);
         signUpTextView = findViewById(R.id.didnt_have_account_tv);
 
-        userDBHandler = new UserDatabaseHandler(this);
+
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = signIn();
-                if(user != null){
-                    Intent intent = new Intent(LoginActivity.this, SignInSuccessfulActivity.class);
-                    intent.putExtra("fullName", user.getFullName());
-                    startActivity(intent);
-                }
+                signIn();
             }
         });
 
         signUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
             }
         });
     }
 
-    public User signIn(){
+    public void signIn(){
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         if (username.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập tên đăng nhập và mật khẩu!", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-        User user = userDBHandler.getUser(username);
-        if (user == null) {
-            Toast.makeText(this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
-            return null;
-        }
-        else {
-            if (!password.equals(user.getPassword())) {
-                Toast.makeText(this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
-                return null;
-            }
         }
 
-        return user;
+        DatabaseReference users = FirebaseQuery.firebaseDatabase.getReference(FirebaseQuery.USERS).child(username);
+
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    Toast.makeText(LoginActivity.this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+
+                    User user = dataSnapshot.getValue(User.class);
+                    if (!password.equals(user.getPassword())) {
+                        Toast.makeText(LoginActivity.this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        FirebaseQuery.user = user;
+                        FirebaseQuery.USERNAME = user.getUserName();
+                        startActivity(new Intent(LoginActivity.this, MainScreenActivity.class));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
 }
