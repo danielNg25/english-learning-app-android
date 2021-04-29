@@ -10,9 +10,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.activities.TopicActivity;
 import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.models.Topic;
 
 import java.util.List;
 
@@ -42,15 +46,24 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicHolder> {
         holder.topicFragLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String topicName = topics.get(position);
-                FirebaseQuery.topic = FirebaseQuery.getTopicByName(topicName, context);
-                if (FirebaseQuery.topic == null){
-                    Toast.makeText(context, "Topic không tồn tại!", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    context.startActivity(new Intent(context, TopicActivity.class));
-                    Toast.makeText(context, FirebaseQuery.topic.getWordList().get(0), Toast.LENGTH_SHORT).show();
-                }
+                FirebaseQuery.getTopicByName(topic, new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.getValue() == null){
+                            Toast.makeText(context, "Topic không tồn tại!", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            FirebaseQuery.topic = dataSnapshot.getValue(Topic.class);
+                            context.startActivity(new Intent(context, TopicActivity.class));
+                            Toast.makeText(context, FirebaseQuery.topic.getWordList().get(0), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
             }
         });

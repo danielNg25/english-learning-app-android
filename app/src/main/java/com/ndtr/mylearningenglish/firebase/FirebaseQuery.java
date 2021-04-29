@@ -31,7 +31,7 @@ public class FirebaseQuery<T> {
     public static User user;
     public static Topic topic;
 
-    public static Topic  topicToReturn;
+
 
     public static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(dbLink);
 
@@ -63,31 +63,18 @@ public class FirebaseQuery<T> {
         return  topicsName;
     }
 
-    public static Topic getTopicByName(String topicName, Context context){
+    public static void getTopicByName(String topicName, ValueEventListener valueEventListener){
 
        DatabaseReference topics = firebaseDatabase.getReference(TOPICS).child(topicName);
 
-       topics.addListenerForSingleValueEvent(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null){
-                    topicToReturn = null;
-                }
-
-                else{
-                    topicToReturn = dataSnapshot.getValue(Topic.class);
+       topics.addListenerForSingleValueEvent(valueEventListener);
 
 
-                }
-           }
+    }
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError databaseError) {
-
-           }
-       });
-       return topicToReturn;
-
+    public static void getAllTopicName(ValueEventListener valueEventListener){
+        DatabaseReference topics = firebaseDatabase.getReference(TOPICS);
+        topics.addValueEventListener(valueEventListener);
     }
 
 }

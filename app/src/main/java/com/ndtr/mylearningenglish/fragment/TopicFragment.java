@@ -12,16 +12,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.activities.TopicActivity;
 import com.ndtr.mylearningenglish.adapters.TopicAdapter;
 import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopicFragment extends Fragment {
     private RecyclerView recyclerView;
-    private List<String> topicsName;
+    private List<String> topicsName = new ArrayList<String>();
     private TopicAdapter topicAdapter;
 
     public TopicFragment(){}
@@ -40,11 +44,29 @@ public class TopicFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.topic_rv);
-        topicsName = FirebaseQuery.getAllTopicName();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        topicAdapter = new TopicAdapter(getActivity(), topicsName);
-        recyclerView.setAdapter(topicAdapter);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        FirebaseQuery.getAllTopicName(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshotChild: dataSnapshot.getChildren()){
+                    topicsName.add(dataSnapshotChild.getKey().toString());
+
+                }
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                topicAdapter = new TopicAdapter(getActivity(), topicsName);
+                recyclerView.setAdapter(topicAdapter);
+                recyclerView.setLayoutManager(linearLayoutManager);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
 
 
