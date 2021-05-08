@@ -16,11 +16,13 @@ public class TopicHolder extends RecyclerView.ViewHolder {
 
     public TextView topicNameTextView;
     public CardView topicFragLinearLayout;
+    public TextView topicDescriptionTextView;
 
     public TopicHolder(@NonNull View itemView) {
         super(itemView);
         topicNameTextView = itemView.findViewById(R.id.topicNameElementTv);
         topicFragLinearLayout = itemView.findViewById(R.id.topicCardView);
+        topicDescriptionTextView = itemView.findViewById(R.id.topicDescriptionElementTv);
     }
 
 

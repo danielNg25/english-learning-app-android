@@ -4,17 +4,25 @@ import java.util.List;
 
 public class Word {
     private String wordName;
-    private String wordID;
     private String meaning;
     private List<String> example;
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Word(){}
 
-    public Word(String wordName, String wordID, String meaning, List<String> example) {
+    public Word(String wordName, String wordID, String meaning, String category, List<String> example) {
         this.wordName = wordName;
-        this.wordID = wordID;
         this.meaning = meaning;
         this.example = example;
+        this.category = category;
     }
 
     public String getWordName() {
@@ -25,13 +33,7 @@ public class Word {
         this.wordName = wordName;
     }
 
-    public String getWordID() {
-        return wordID;
-    }
 
-    public void setWordID(String wordID) {
-        this.wordID = wordID;
-    }
 
     public String getMeaning() {
         return meaning;

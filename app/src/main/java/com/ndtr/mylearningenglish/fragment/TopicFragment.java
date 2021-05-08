@@ -26,6 +26,7 @@ import java.util.List;
 public class TopicFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<String> topicsName = new ArrayList<String>();
+    private List<String> topicsDescription = new ArrayList<>();
     private TopicAdapter topicAdapter;
 
     public TopicFragment(){}
@@ -48,11 +49,12 @@ public class TopicFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshotChild: dataSnapshot.getChildren()){
-                    topicsName.add(dataSnapshotChild.getKey().toString());
+                    topicsName.add(dataSnapshotChild.getKey());
+                    topicsDescription.add(dataSnapshotChild.child("shortDescription").getValue().toString());
 
                 }
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                topicAdapter = new TopicAdapter(getActivity(), topicsName);
+                topicAdapter = new TopicAdapter(getActivity(), topicsName, topicsDescription);
                 recyclerView.setAdapter(topicAdapter);
                 recyclerView.setLayoutManager(linearLayoutManager);
 

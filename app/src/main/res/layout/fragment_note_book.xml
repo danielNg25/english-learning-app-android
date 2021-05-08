@@ -14,7 +14,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:hint="Nhập tên topic"
+            android:hint="Nhập tên từ"
             android:textSize="24dp"
             android:layout_weight="1"/>
         <Button
@@ -25,7 +25,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topic_rv"
+        android:id="@+id/noteBookRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

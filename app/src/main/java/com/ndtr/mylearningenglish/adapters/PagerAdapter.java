@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.ndtr.mylearningenglish.fragment.AccountFragment;
+import com.ndtr.mylearningenglish.fragment.NoteBookFragment;
 import com.ndtr.mylearningenglish.fragment.TopicFragment;
 
 public class PagerAdapter extends FragmentStateAdapter {
@@ -20,6 +21,8 @@ public class PagerAdapter extends FragmentStateAdapter {
         switch (position){
             case 0:
                 return new TopicFragment();
+            case 1:
+                return new NoteBookFragment();
             default:
                 return new AccountFragment();
         }
@@ -27,6 +30,6 @@ public class PagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

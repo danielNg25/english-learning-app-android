@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/topicCardView"
     android:layout_width="match_parent"
-    android:layout_margin="8dp"
-    android:padding="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    style="@style/CardViewElement">
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="16dp">
-
-
+        android:orientation="vertical">
         <TextView
             android:id="@+id/topicNameElementTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TopicName"
-            android:textSize="36dp"/>
+            style="@style/TopicName"/>
+        <TextView
+            android:id="@+id/topicDescriptionElementTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            style="@style/TopicDescriptionTopicActivity"/>
     </LinearLayout>
+
+
 </androidx.cardview.widget.CardView>

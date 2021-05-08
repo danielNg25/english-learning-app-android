@@ -34,6 +34,11 @@ public class MainScreenActivity extends AppCompatActivity {
                         tab.setIcon(R.drawable.ic_topic);
                         break;
                     }
+                    case 1:{
+                        tab.setText("Sổ từ");
+                        tab.setIcon(R.drawable.ic_book);
+                        break;
+                    }
                     default:{
                         tab.setText("Tài khoản");
                         tab.setIcon(R.drawable.ic_account);

@@ -38,4 +38,29 @@
         <item name="fontFamily">DOSIS</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="TopicName">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TopicDescriptionTopicActivity">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+    <style name="CardViewElement">
+
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
 </resources>

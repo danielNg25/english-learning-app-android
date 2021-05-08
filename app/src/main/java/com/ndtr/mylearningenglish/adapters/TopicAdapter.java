@@ -25,10 +25,12 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicHolder> {
     private Context context;
 
     private List<String> topics;
+    private List<String> shortDescription;
 
-    public TopicAdapter(Context context, List<String> topics){
+    public TopicAdapter(Context context, List<String> topics, List<String> shortDescription){
         this.context = context;
         this.topics = topics;
+        this.shortDescription = shortDescription;
     }
 
     @NonNull
@@ -42,6 +44,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicHolder> {
     public void onBindViewHolder(@NonNull TopicHolder holder, int position) {
         String topic = topics.get(position);
         holder.topicNameTextView.setText(topic);
+        holder.topicDescriptionTextView.setText(shortDescription.get(position));
 
         holder.topicFragLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +58,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicHolder> {
                         else{
                             FirebaseQuery.topic = dataSnapshot.getValue(Topic.class);
                             context.startActivity(new Intent(context, TopicActivity.class));
-                            Toast.makeText(context, FirebaseQuery.topic.getWordList().get(0), Toast.LENGTH_SHORT).show();
+
                         }
                     }
 

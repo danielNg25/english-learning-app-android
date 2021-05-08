@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.activities.LoginActivity;
 import com.ndtr.mylearningenglish.models.Topic;
 import com.ndtr.mylearningenglish.models.User;
+import com.ndtr.mylearningenglish.models.Word;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class FirebaseQuery<T> {
 
     public static User user;
     public static Topic topic;
+    public static Word word;
 
 
 
@@ -75,6 +77,21 @@ public class FirebaseQuery<T> {
     public static void getAllTopicName(ValueEventListener valueEventListener){
         DatabaseReference topics = firebaseDatabase.getReference(TOPICS);
         topics.addValueEventListener(valueEventListener);
+    }
+
+    public static void getAllWordsFromList(List<String> wordsName, ValueEventListener valueEventListener){
+        for (String eachWord: wordsName){
+            DatabaseReference word = firebaseDatabase.getReference(WORDS).child(eachWord);
+            word.addValueEventListener(valueEventListener);
+        }
+
+    }
+
+    public static void getWordsFromID(String wordsID, ValueEventListener valueEventListener){
+        DatabaseReference word = firebaseDatabase.getReference(WORDS).child(wordsID);
+        word.addValueEventListener(valueEventListener);
+
+
     }
 
 }
