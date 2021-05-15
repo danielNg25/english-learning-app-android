@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLearningEnglish">
-        <activity android:name=".activities.WordsListActivity"></activity>
+        <activity android:name=".activities.ExerciseResultActivity"></activity>
+        <activity android:name=".activities.FillBlankExerciseActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activities.ExercisesListActivity" />
+        <activity android:name=".activities.WordsListActivity" />
         <activity android:name=".activities.TopicActivity" />
         <activity android:name=".activities.MainScreenActivity" />
         <activity android:name=".activities.WordActivity" />
-        <activity android:name=".activities.SignInSuccessfulActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

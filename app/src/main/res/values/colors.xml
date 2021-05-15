@@ -17,4 +17,7 @@
     <color name="topicBtn1">#a6ff47</color>
     <color name="topicBtn2">#ffc052</color>
     <color name="topicBtn3">#ff7752</color>
+
+    <color name="rightAnswer">#42f578</color>
+    <color name="wrongAnswer">#f23a3a</color>
 </resources>

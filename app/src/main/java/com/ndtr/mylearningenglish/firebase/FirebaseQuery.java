@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.activities.LoginActivity;
+import com.ndtr.mylearningenglish.models.Exercise;
 import com.ndtr.mylearningenglish.models.Topic;
 import com.ndtr.mylearningenglish.models.User;
 import com.ndtr.mylearningenglish.models.Word;
@@ -28,10 +29,13 @@ public class FirebaseQuery<T> {
     public static final String USERS = "users";
     public static final String TOPICS = "topic";
     public static final String WORDS = "words";
+    public static final String WORDLIST = "wordList";
+    public static final String EXERCISE = "exercises";
 
     public static User user;
     public static Topic topic;
     public static Word word;
+    public static Exercise exercise;
 
 
 
@@ -94,4 +98,13 @@ public class FirebaseQuery<T> {
 
     }
 
+    public static void addWordToNoteBook(List<String> words){
+        DatabaseReference wordList = firebaseDatabase.getReference(USERS).child(user.getUserName()).child(WORDLIST);
+        wordList.setValue(words);
+    }
+
+    public static void getAllExercisesByTopicName(String topicName, ValueEventListener valueEventListener){
+        DatabaseReference exercisesList = firebaseDatabase.getReference(EXERCISE).child(topicName);
+        exercisesList.addValueEventListener(valueEventListener);
+    }
 }

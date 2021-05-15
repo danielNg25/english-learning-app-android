@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ndtr.mylearningenglish.R;
+import com.ndtr.mylearningenglish.activities.MainScreenActivity;
 import com.ndtr.mylearningenglish.activities.WordActivity;
+import com.ndtr.mylearningenglish.activities.WordsListActivity;
 import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
 import com.ndtr.mylearningenglish.models.Word;
 
@@ -40,7 +42,14 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
             @Override
             public void onClick(View view) {
                 FirebaseQuery.word = wordList.get(position);
-                context.startActivity(new Intent(context, WordActivity.class));
+                Intent intent = new Intent(context, WordActivity.class);
+                if (context instanceof WordsListActivity){
+                    intent.putExtra("wordID", FirebaseQuery.topic.getWordList().get(position));
+                }
+                else if (context instanceof MainScreenActivity){
+                    intent.putExtra("wordID", FirebaseQuery.user.getWordList().get(position));
+                }
+                context.startActivity(intent);
             }
         });
     }

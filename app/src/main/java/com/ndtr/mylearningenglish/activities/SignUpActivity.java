@@ -81,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 } else {
                     User newUser = new User(username, password, fullName, email);
-                    FirebaseQuery.firebaseDatabase.getReference(FirebaseQuery.USERS).child(username).setValue(newUser);
+                    users.setValue(newUser);
 
                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     startActivity(intent);

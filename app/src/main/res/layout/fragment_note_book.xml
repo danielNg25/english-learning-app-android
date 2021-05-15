@@ -27,6 +27,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noteBookRV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/blankWordListTV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="Bạn chưa thêm từ nào"/>
 
 </LinearLayout>
