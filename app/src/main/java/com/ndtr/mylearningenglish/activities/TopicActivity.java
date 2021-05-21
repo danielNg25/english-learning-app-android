@@ -8,20 +8,28 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ndtr.mylearningenglish.R;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 public class TopicActivity extends AppCompatActivity {
     TextView newWordTV;
-    TextView excerciseTV;
-    TextView testTV;
+    TextView exerciseTV;
+    TextView topicNameTV;
+    TextView topicDescriptionTV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
 
+        topicNameTV = findViewById(R.id.topicNameTopicActTV);
+        topicDescriptionTV = findViewById(R.id.topicDescriptionTopicActTV);
         newWordTV = findViewById(R.id.newWordTopicAct);
-        excerciseTV = findViewById(R.id.exerciseTopicAct);
+        exerciseTV = findViewById(R.id.exerciseTopicAct);
+
+        topicNameTV.setText(FirebaseAuth.topic.getTopicName().toUpperCase());
+        topicDescriptionTV.setText(FirebaseAuth.topic.getLongDescription());
+
         newWordTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,7 +37,7 @@ public class TopicActivity extends AppCompatActivity {
             }
         });
 
-        excerciseTV.setOnClickListener(new View.OnClickListener() {
+        exerciseTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TopicActivity.this, ExercisesListActivity.class);
@@ -47,6 +55,6 @@ public class TopicActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(TopicActivity.this, MainScreenActivity.class));
-        FirebaseQuery.topic = null;
+        FirebaseAuth.topic = null;
     }
 }

@@ -1,36 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="16dp"
-    tools:context=".activities.FillBlankExerciseActivity">
-
-    <TextView
-        android:id="@+id/questionHeaderExerciseTV"
+    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đề bài"
-        android:layout_marginBottom="16dp"
-        style="@style/WordActivityHeader"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".activities.FillBlankExerciseActivity">
+        <LinearLayout
+            android:id="@+id/fillBlankScoreLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ScoreTextView"
+                android:text="Số câu đúng: "/>
+            <TextView
+                android:id="@+id/fillBlankScoreTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ScoreTextView"
+                android:textColor="@color/score"
+                android:text="10/10"/>
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical">
-       <TextView
+        </LinearLayout>
 
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
-   </LinearLayout>
+        <TextView
+            android:id="@+id/questionHeaderExerciseTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Điền từ thích hợp vào chỗ trống:"
+            android:layout_marginBottom="16dp"
+            style="@style/WordActivityHeader"/>
+        <ImageView
+            android:id="@+id/fillBlankImageIV"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/exerciseSubmitBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_0" />
 
-</LinearLayout>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_1"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_2"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_3"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_4"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_5"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_6"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_7"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_8"/>
+            <include layout="@layout/fill_blank_exercise_element"
+                android:id="@+id/fill_blank_exercise_9"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/exerciseSubmitBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Submit" />
+
+    </LinearLayout>
+</ScrollView>

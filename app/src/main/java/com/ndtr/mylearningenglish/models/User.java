@@ -1,10 +1,7 @@
 package com.ndtr.mylearningenglish.models;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.google.firebase.database.IgnoreExtraProperties;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +92,7 @@ public class User {
             }
             else{
                 wordList.add(wordID);
-                FirebaseQuery.addWordToNoteBook(wordList);
+                FirebaseAuth.addWordToNoteBook(wordList);
 //            Toast.makeText(context, "Thêm từ thành công", Toast.LENGTH_SHORT);
                 return true;
             }
@@ -104,7 +101,7 @@ public class User {
         else{
             wordList = new ArrayList<>();
             wordList.add(wordID);
-            FirebaseQuery.addWordToNoteBook(wordList);
+            FirebaseAuth.addWordToNoteBook(wordList);
 //            Toast.makeText(context, "Thêm từ thành công", Toast.LENGTH_SHORT);
             return true;
         }

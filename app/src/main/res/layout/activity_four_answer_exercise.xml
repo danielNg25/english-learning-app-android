@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.FourAnswerExerciseActivity"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/fourAnswerScoreLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ScoreTextView"
+                android:text="Số câu đúng: "/>
+            <TextView
+                android:id="@+id/fourAnswerScoreTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ScoreTextView"
+                android:textColor="@color/score"
+                android:text="10/10"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chọn đáp án đúng"
+            style="@style/WordActivityHeader"/>
+        <ImageView
+            android:id="@+id/fourAnswerIM"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_0"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_1"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_2"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_3"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_4"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_5"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_6"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_7"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_8"/>
+        <include layout="@layout/four_answer_exercise_element"
+            android:id="@+id/fourAnswerExercise_9"/>
+
+
+        <Button
+            android:id="@+id/fourAnswerExerciseSubmitBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Submit" />
+    </LinearLayout>
+</ScrollView>

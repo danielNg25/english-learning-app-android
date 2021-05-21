@@ -4,13 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_192"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLearningEnglish">
-        <activity android:name=".activities.ExerciseResultActivity"></activity>
-        <activity android:name=".activities.FillBlankExerciseActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activities.FourAnswerExerciseActivity"></activity>
+        <activity
+            android:name=".activities.FillBlankExerciseActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activities.ExercisesListActivity" />
         <activity android:name=".activities.WordsListActivity" />
         <activity android:name=".activities.TopicActivity" />

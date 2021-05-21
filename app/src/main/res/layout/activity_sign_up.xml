@@ -36,18 +36,21 @@
             android:id="@+id/usernameSignUp_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:textSize="24dp"
             android:hint="Tên đăng nhập"/>
         <EditText
             android:id="@+id/fullNameSignUp_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:textSize="24dp"
             android:hint="Họ và tên"/>
         <EditText
             android:id="@+id/emailSignUp_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:textSize="24dp"
             android:hint="E-mail"/>
         <EditText

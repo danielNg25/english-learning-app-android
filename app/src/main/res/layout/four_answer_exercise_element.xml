@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/fourAnswerQuestionTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1. Chọn đáp án đúng"
+        style="@style/WordCategory" />
+
+    <TextView
+        android:id="@+id/firstAnswerTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A. Đáp án A"
+        style="@style/ExerciseAnswer"/>
+    <TextView
+        android:id="@+id/secondAnswerTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="B. Đáp án B"
+        style="@style/ExerciseAnswer"/>
+    <TextView
+        android:id="@+id/thirdAnswerTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="C. Đáp án C"
+        style="@style/ExerciseAnswer"/>
+    <TextView
+        android:id="@+id/fourthAnswerTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A. Đáp án A"
+        style="@style/ExerciseAnswer"/>
+    <EditText
+        android:id="@+id/answerFourAnswerET"
+        style="@style/WordCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:inputType="text"
+        android:hint="Đáp án"/>
+    <TextView
+        android:id="@+id/answerFourAnswerTV"
+        style="@style/WordCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginLeft="16dp"
+        android:visibility="gone"
+        android:hint="Bạn chưa điền đáp án"/>
+    <TextView
+        android:id="@+id/keyFourAnswerTV"
+        style="@style/WordCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:visibility="gone"
+        android:hint="Đáp án"/>
+</LinearLayout>

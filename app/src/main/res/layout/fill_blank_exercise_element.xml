@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="16dp"
     android:orientation="vertical">
     <TextView
         android:id="@+id/questionFillBlankTV"
@@ -17,6 +18,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="italic"
+        android:inputType="text"
         android:hint="Đáp án"/>
-
+    <TextView
+        android:id="@+id/answerFillBlankTV"
+        style="@style/WordCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:layout_marginLeft="16dp"
+        android:visibility="gone"
+        android:hint="Bạn chưa điền đáp án"/>
+    <TextView
+        android:id="@+id/keyFillBlankTV"
+        style="@style/WordCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:visibility="gone"
+        android:hint="Đáp án"/>
 </LinearLayout>

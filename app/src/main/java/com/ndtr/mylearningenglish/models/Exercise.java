@@ -4,7 +4,8 @@ package com.ndtr.mylearningenglish.models;
 import java.util.List;
 
 /**
- *param {int} type - 1 for Fill blank exercise, 2 for Choose the correct answer exercise
+ *param {int} type - 1 for Fill blank exercise, 2 for Fill blank with Image
+ *                     3 for Four answer exercise, 4 for four answer exercise with Image
  *
 */
 
@@ -15,7 +16,7 @@ public abstract class Exercise {
 
     public Exercise(){}
 
-    public Exercise(long type, List<String> questions, List<String> keys){
+        public Exercise(long type, List<String> questions, List<String> keys){
         this.type = type;
         this.questions = questions;
         this.keys = keys;

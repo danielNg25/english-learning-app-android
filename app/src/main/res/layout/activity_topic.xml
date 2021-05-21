@@ -8,6 +8,45 @@
     android:orientation="vertical"
 
     android:layout_margin="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TopicName"
+            android:text="Chủ đề: "/>
+        <TextView
+            android:id="@+id/topicNameTopicActTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TopicName"
+            android:textColor="@color/wrongAnswer"
+            android:text="Tên chủ đề"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giới thiệu chủ đề:"
+            style="@style/WordActivityHeader"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:id="@+id/topicDescriptionTopicActTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TopicDescription"
+            android:textAlignment="center"
+            android:text="Hãy cùng học các từ vựng thuộc chủ đề Gia đình nào!"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/newWordTopicAct"
@@ -16,6 +55,7 @@
         style="@style/TopicTextViewButton"
         android:text="Học từ vựng"
         android:layout_weight="1"
+
         android:background="@color/topicBtn1"/>
 
     <TextView
@@ -27,12 +67,5 @@
         android:layout_weight="1"
         android:background="@color/topicBtn2"/>
 
-    <TextView
-        android:id="@+id/testTopicAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TopicTextViewButton"
-        android:text="Làm bài kiểm tra"
-        android:layout_weight="1"
-        android:background="@color/topicBtn3"/>
+
 </LinearLayout>

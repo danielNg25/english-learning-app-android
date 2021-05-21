@@ -14,10 +14,9 @@ import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.User;
 
 
@@ -63,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Vui lòng nhập tên đăng nhập và mật khẩu!", Toast.LENGTH_SHORT).show();
         }
 
-        DatabaseReference users = FirebaseQuery.firebaseDatabase.getReference(FirebaseQuery.USERS).child(username);
+        DatabaseReference users = FirebaseAuth.firebaseDatabase.getReference(FirebaseAuth.USERS).child(username);
 
         users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        FirebaseQuery.user = user;
-                        FirebaseQuery.USERNAME = user.getUserName();
+                        FirebaseAuth.user = user;
+                        FirebaseAuth.USERNAME = user.getUserName();
                         startActivity(new Intent(LoginActivity.this, MainScreenActivity.class));
                     }
                 }

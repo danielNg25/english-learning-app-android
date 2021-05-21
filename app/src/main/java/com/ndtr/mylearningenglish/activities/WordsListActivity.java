@@ -6,19 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.adapters.WordAdapter;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.Word;
 
 import java.util.ArrayList;
@@ -41,7 +35,7 @@ public class WordsListActivity extends AppCompatActivity {
 
 
 
-//        FirebaseQuery.getAllWordsFromList(FirebaseQuery.topic.getWordList(),new ValueEventListener() {
+//        FirebaseAuth.getAllWordsFromList(FirebaseAuth.topic.getWordList(),new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                if(dataSnapshot.getValue() != null){
@@ -55,10 +49,10 @@ public class WordsListActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        List<String> wordsIDList = FirebaseQuery.topic.getWordList();
+        List<String> wordsIDList = FirebaseAuth.topic.getWordList();
 
         for (String wordID: wordsIDList){
-            FirebaseQuery.getWordsFromID(wordID, new ValueEventListener() {
+            FirebaseAuth.getWordsFromID(wordID, new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

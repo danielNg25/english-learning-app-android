@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.adapters.WordAdapter;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.Word;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class NoteBookFragment extends Fragment {
         recyclerView = view.findViewById(R.id.noteBookRV);
         wordList = new ArrayList<>();
 
-        List <String> wordIDList = FirebaseQuery.user.getWordList();
+        List <String> wordIDList = FirebaseAuth.user.getWordList();
 
         if (wordIDList == null){
             recyclerView.setVisibility(View.GONE);
@@ -56,7 +56,7 @@ public class NoteBookFragment extends Fragment {
             recyclerView.setVisibility(View.VISIBLE);
             blankTextView.setVisibility(View.GONE);
             for (String wordID: wordIDList){
-                FirebaseQuery.getWordsFromID(wordID, new ValueEventListener() {
+                FirebaseAuth.getWordsFromID(wordID, new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.getValue() != null){

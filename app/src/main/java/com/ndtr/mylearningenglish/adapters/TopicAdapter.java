@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.activities.TopicActivity;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.Topic;
 
 import java.util.List;
@@ -49,14 +49,14 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicHolder> {
         holder.topicFragLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseQuery.getTopicByName(topic, new ValueEventListener() {
+                FirebaseAuth.getTopicByName(topic, new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.getValue() == null){
                             Toast.makeText(context, "Topic không tồn tại!", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            FirebaseQuery.topic = dataSnapshot.getValue(Topic.class);
+                            FirebaseAuth.topic = dataSnapshot.getValue(Topic.class);
                             context.startActivity(new Intent(context, TopicActivity.class));
 
                         }

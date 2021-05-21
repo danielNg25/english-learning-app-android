@@ -1,6 +1,5 @@
 package com.ndtr.mylearningenglish.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +15,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
-import com.ndtr.mylearningenglish.activities.TopicActivity;
 import com.ndtr.mylearningenglish.adapters.TopicAdapter;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +42,7 @@ public class TopicFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.topic_rv);
-        FirebaseQuery.getAllTopicName(new ValueEventListener() {
+        FirebaseAuth.getAllTopicName(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshotChild: dataSnapshot.getChildren()){

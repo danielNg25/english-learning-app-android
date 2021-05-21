@@ -2,13 +2,11 @@ package com.ndtr.mylearningenglish.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.adapters.ExampleHolder;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.fragment.NoteBookFragment;
 
 import java.util.ArrayList;
@@ -46,27 +44,27 @@ public class WordActivity extends AppCompatActivity {
         addToNoteBookButton = findViewById(R.id.addToNoteBookBtn);
         exampleRecyclerView = findViewById(R.id.exampleRV);
 
-        String wordName = FirebaseQuery.word.getWordName();
+        String wordName = FirebaseAuth.word.getWordName();
 
         wordName = wordName.substring(0,1).toUpperCase() + wordName.substring(1).toLowerCase();
 
         wordNameTextView.setText(wordName);
-        categoryTextView.setText(FirebaseQuery.word.getCategory());
+        categoryTextView.setText(FirebaseAuth.word.getCategory());
 
-        meaningTextView.setText(FirebaseQuery.word.getMeaning());
+        meaningTextView.setText(FirebaseAuth.word.getMeaning());
 
         Intent intent = getIntent();
         String wordID = intent.getStringExtra("wordID");
 
-        if(FirebaseQuery.user.getWordList() == null||!FirebaseQuery.user.getWordList().contains(wordID)){
+        if(FirebaseAuth.user.getWordList() == null||!FirebaseAuth.user.getWordList().contains(wordID)){
             addToNoteBookButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(FirebaseQuery.user.checkIfNotExistWord(wordID)){
+                    if(FirebaseAuth.user.checkIfNotExistWord(wordID)){
                         if (NoteBookFragment.wordList==null){
                             NoteBookFragment.wordList = new ArrayList<>();
                         }
-                        NoteBookFragment.wordList.add(FirebaseQuery.word);
+                        NoteBookFragment.wordList.add(FirebaseAuth.word);
 
                     }
                     alreadyAddedTextView.setVisibility(View.VISIBLE);
@@ -81,7 +79,7 @@ public class WordActivity extends AppCompatActivity {
 
         }
 
-        List<String> exampleList = FirebaseQuery.word.getExample();
+        List<String> exampleList = FirebaseAuth.word.getExample();
 
         RecyclerView.Adapter adapter = new RecyclerView.Adapter<ExampleHolder>() {
             @NonNull
@@ -95,6 +93,8 @@ public class WordActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(@NonNull ExampleHolder holder, int position) {
                 holder.exampleTextView.setText(exampleList.get(position));
+                int pos = position+1;
+                holder.exampleNumberTextView.setText("Ví dụ " + pos +": ");
             }
 
             @Override
@@ -112,6 +112,6 @@ public class WordActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        FirebaseQuery.word = null;
+        FirebaseAuth.word = null;
     }
 }

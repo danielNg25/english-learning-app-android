@@ -43,11 +43,20 @@
         <item name="android:textSize">20dp</item>
         <item name="fontFamily">DOSIS</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="WordActivityHeader">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24dp</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ScoreTextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
         <item name="fontFamily">DOSIS</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -68,12 +77,38 @@
         <item name="android:padding">8dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
-    
-    <style name="CardViewElement">
 
+    <style name="TopicDescription">
+        <item name="android:textSize">20dp</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CardViewElement">
         <item name="cardElevation">2dp</item>
         <item name="cardCornerRadius">20dp</item>
         <item name="cardPreventCornerOverlap">true</item>
         <item name="cardUseCompatPadding">true</item>
+    </style>
+
+    <style name="accountFragmentCardViewHeader">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:textSize">32dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="accountFragmentCardViewElementTittle">
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="ExerciseAnswer">
+        <item name="android:layout_marginLeft">32dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="fontFamily">DOSIS</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

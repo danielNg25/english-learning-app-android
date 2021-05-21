@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.activities.LoginActivity;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 public class AccountFragment extends Fragment {
 
@@ -44,9 +44,9 @@ public class AccountFragment extends Fragment {
         userNameTextView = view.findViewById(R.id.usernameAccountTab_tv);
         emailTextView = view.findViewById(R.id.emailAccountTab_tv);
 
-        fullNameTextView.setText(FirebaseQuery.user.getFullName());
-        userNameTextView.setText(FirebaseQuery.user.getUserName());
-        emailTextView.setText(FirebaseQuery.user.getEmail());
+        fullNameTextView.setText(FirebaseAuth.user.getFullName());
+        userNameTextView.setText(FirebaseAuth.user.getUserName());
+        emailTextView.setText(FirebaseAuth.user.getEmail());
 
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class AccountFragment extends Fragment {
     }
 
     public void logOut(){
-        FirebaseQuery.user = null;
+        FirebaseAuth.user = null;
         startActivity(new Intent(getContext(), LoginActivity.class));
     }
 }

@@ -13,7 +13,7 @@ import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.activities.MainScreenActivity;
 import com.ndtr.mylearningenglish.activities.WordActivity;
 import com.ndtr.mylearningenglish.activities.WordsListActivity;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.Word;
 
 import java.util.List;
@@ -36,18 +36,19 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
     @Override
     public void onBindViewHolder(@NonNull WordHolder holder, int position) {
         Word currentWord = wordList.get(position);
+        int pos = position+1;
         holder.wordElementTextView.setText(currentWord.getWordName());
 
         holder.wordCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseQuery.word = wordList.get(position);
+                FirebaseAuth.word = wordList.get(position);
                 Intent intent = new Intent(context, WordActivity.class);
                 if (context instanceof WordsListActivity){
-                    intent.putExtra("wordID", FirebaseQuery.topic.getWordList().get(position));
+                    intent.putExtra("wordID", FirebaseAuth.topic.getWordList().get(position));
                 }
                 else if (context instanceof MainScreenActivity){
-                    intent.putExtra("wordID", FirebaseQuery.user.getWordList().get(position));
+                    intent.putExtra("wordID", FirebaseAuth.user.getWordList().get(position));
                 }
                 context.startActivity(intent);
             }

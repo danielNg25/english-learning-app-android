@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.activities.FillBlankExerciseActivity;
-import com.ndtr.mylearningenglish.firebase.FirebaseQuery;
+import com.ndtr.mylearningenglish.activities.FourAnswerExerciseActivity;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.Exercise;
+import com.ndtr.mylearningenglish.models.FourAnswerExercise;
 
 import java.util.List;
 
@@ -39,9 +41,19 @@ public class ExerciseListAdapter extends RecyclerView.Adapter<ExerciseListHolder
         holder.exerciseCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseQuery.exercise = exerciseList.get(position);
-                Intent intent = new Intent(context, FillBlankExerciseActivity.class);
-                context.startActivity(intent);
+                FirebaseAuth.exercise = exerciseList.get(position);
+                if (FirebaseAuth.exercise.getType() == 1 || FirebaseAuth.exercise.getType() == 2){
+                    Intent intent = new Intent(context, FillBlankExerciseActivity.class);
+                    intent.putExtra("position", position);
+                    context.startActivity(intent);
+                }
+
+                if (FirebaseAuth.exercise.getType() == 3 || FirebaseAuth.exercise.getType() == 4){
+                    Intent intent = new Intent(context, FourAnswerExerciseActivity.class);
+                    intent.putExtra("position", position);
+                    context.startActivity(intent);
+                }
+
             }
         });
     }

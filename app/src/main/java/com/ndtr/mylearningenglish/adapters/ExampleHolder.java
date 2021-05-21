@@ -11,9 +11,10 @@ import com.ndtr.mylearningenglish.R;
 public class ExampleHolder extends RecyclerView.ViewHolder {
 
     public TextView exampleTextView;
-
+    public TextView exampleNumberTextView;
     public ExampleHolder(@NonNull View itemView) {
         super(itemView);
         exampleTextView = itemView.findViewById(R.id.exampleTV);
+        exampleNumberTextView = itemView.findViewById(R.id.exampleNumberTV);
     }
 }
