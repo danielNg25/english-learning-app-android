@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView hadAccountTextView;
 
 
+    public int accountType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         hadAccountTextView = findViewById(R.id.hadAccount_tv);
 
         addButton = findViewById(R.id.add_btn);
+
 
 
 
@@ -95,4 +102,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

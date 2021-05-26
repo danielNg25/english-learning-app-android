@@ -46,6 +46,14 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicHolder> {
         holder.topicNameTextView.setText(topic);
         holder.topicDescriptionTextView.setText(shortDescription.get(position));
 
+        if(position%2 == 0){
+
+            holder.topicFragLinearLayout.setCardBackgroundColor(context.getResources().getColor(R.color.even_color));
+        }
+        else{
+            holder.topicFragLinearLayout.setCardBackgroundColor(context.getResources().getColor(R.color.odd_color));
+        }
+
         holder.topicFragLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -18,7 +18,7 @@ import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 public class AccountFragment extends Fragment {
 
-    private TextView fullNameTextView, userNameTextView, emailTextView;
+    private TextView fullNameTextView, userNameTextView, emailTextView, noteBookCountTextView, currentRankingTextView, exercisesScoreTextView;
     private Button logOutButton;
 
     public AccountFragment(){
@@ -44,9 +44,16 @@ public class AccountFragment extends Fragment {
         userNameTextView = view.findViewById(R.id.usernameAccountTab_tv);
         emailTextView = view.findViewById(R.id.emailAccountTab_tv);
 
+        noteBookCountTextView = view.findViewById(R.id.noteBookCountTV);
+        currentRankingTextView = view.findViewById(R.id.curRankingTV);
+        exercisesScoreTextView = view.findViewById(R.id.scoreCountTV);
+
         fullNameTextView.setText(FirebaseAuth.user.getFullName());
         userNameTextView.setText(FirebaseAuth.user.getUserName());
         emailTextView.setText(FirebaseAuth.user.getEmail());
+
+        noteBookCountTextView.setText(String.valueOf(FirebaseAuth.user.getWordList().size()));
+        exercisesScoreTextView.setText(String.valueOf(FirebaseAuth.user.countExercisesScore()));
 
         logOutButton.setOnClickListener(new View.OnClickListener() {
             @Override

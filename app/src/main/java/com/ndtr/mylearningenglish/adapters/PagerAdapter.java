@@ -7,6 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.ndtr.mylearningenglish.fragment.AccountFragment;
 import com.ndtr.mylearningenglish.fragment.NoteBookFragment;
+import com.ndtr.mylearningenglish.fragment.RankingFragment;
 import com.ndtr.mylearningenglish.fragment.TopicFragment;
 
 public class PagerAdapter extends FragmentStateAdapter {
@@ -23,6 +24,9 @@ public class PagerAdapter extends FragmentStateAdapter {
                 return new TopicFragment();
             case 1:
                 return new NoteBookFragment();
+
+            case 2:
+                return new RankingFragment();
             default:
                 return new AccountFragment();
         }
@@ -30,6 +34,6 @@ public class PagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 4;
     }
 }

@@ -17,9 +17,33 @@
     <style name="Theme.MyLearningEnglish.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
 
+    </style>
+    <style name="CustomSpinner" parent="Theme.MyLearningEnglish">
+        <item name="android:spinnerItemStyle">
+            @style/SpinnerItem
+        </item>
+
+        <!-- For each individual Spinner list item once clicked on -->
+        <item name="android:spinnerDropDownItemStyle">
+            @style/SpinnerDropDownItem
+        </item>
+    </style>
     <style name="Theme.MyLearningEnglish.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MyLearningEnglish.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SpinnerItem">
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="SpinnerDropDownItem" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:textColor">@color/unselected_color</item>
+        <item name="android:textSize">24dp</item>
+    </style>
 </resources>

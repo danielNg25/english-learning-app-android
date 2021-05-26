@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#F44336</color>
-    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorPrimary">#42a5f5</color>
+    <color name="colorPrimaryDark">#42a5a5</color>
     <color name="colorAccent">#448AFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorDivider">#ECECEC</color>
@@ -22,4 +22,15 @@
     <color name="wrongAnswer">#f23a3a</color>
 
     <color name="score">#f23a3a</color>
+    
+    <color name="unselected_color">#808080</color>
+    <color name="selected_color">#42a5a5</color>
+
+    <color name="odd_color">#bcffb0</color>
+    <color name="even_color">#ffb5f1</color>
+
+    <color name="myRank">#94dbff</color>
+
+    <color name="accountFragment1">#a1c5ff</color>
+    <color name="accountFragment2">#ffc194</color>
 </resources>

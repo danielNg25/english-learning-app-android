@@ -39,6 +39,14 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
         int pos = position+1;
         holder.wordElementTextView.setText(currentWord.getWordName());
 
+        if(position%2 == 0){
+
+            holder.wordCardView.setCardBackgroundColor(context.getResources().getColor(R.color.even_color));
+        }
+        else{
+            holder.wordCardView.setCardBackgroundColor(context.getResources().getColor(R.color.odd_color));
+        }
+
         holder.wordCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,9 +54,11 @@ public class WordAdapter extends RecyclerView.Adapter<WordHolder> {
                 Intent intent = new Intent(context, WordActivity.class);
                 if (context instanceof WordsListActivity){
                     intent.putExtra("wordID", FirebaseAuth.topic.getWordList().get(position));
+                    intent.putExtra("preAct", "WordList");
                 }
                 else if (context instanceof MainScreenActivity){
                     intent.putExtra("wordID", FirebaseAuth.user.getWordList().get(position));
+                    intent.putExtra("preAct", "NoteBook");
                 }
                 context.startActivity(intent);
             }

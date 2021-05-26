@@ -5,6 +5,11 @@ import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+/* @param type: 1 for Student account, 2 for Teacher account
+
+ */
 
 @IgnoreExtraProperties
 public class User {
@@ -14,16 +19,18 @@ public class User {
     private String fullName;
     private String email;
 
+    private Map<String, Long> exercises;
     private List<String> wordList;
 
     public User(){}
 
-    public User(String userName, String password, String fullName, String email, List<String> wordList){
+    public User(String userName, String password, String fullName, String email, Map<String, Long> exercises, List<String> wordList){
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
         this.email = email;
         this.wordList = wordList;
+        this.exercises = exercises;
     }
 
     public User(String userName, String password, String fullName, String email){
@@ -33,13 +40,27 @@ public class User {
         this.email = email;
     }
 
-
+    public int countExercisesScore(){
+        int sum = 0;
+        for (String key: this.exercises.keySet()){
+            sum += this.exercises.get(key);
+        }
+        return sum;
+    }
 
     public boolean isEmpty(){
         if (userName.isEmpty()||password.isEmpty()){
             return false;
         }
         return true;
+    }
+
+    public Map<String, Long> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(Map<String, Long> exercises) {
+        this.exercises = exercises;
     }
 
     public List<String> getWordList() {

@@ -2,10 +2,14 @@ package com.ndtr.mylearningenglish.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import androidx.appcompat.widget.ActionMenuView;
+import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +26,10 @@ import java.util.List;
 
 public class ExercisesListActivity extends AppCompatActivity {
 
+
+    private Toolbar toolbar;
+    private ActionMenuView actionMenuView;
+    private TextView toolbarTitle;
     private RecyclerView recyclerView;
     private ExerciseListAdapter exerciseListAdapter;
     private List<Exercise> exerciseList = new ArrayList<>();
@@ -32,6 +40,16 @@ public class ExercisesListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercises_list);
 
         recyclerView = findViewById(R.id.exerciseListRV);
+
+        toolbar = findViewById(R.id.exerciseListActToolBar);
+        actionMenuView = findViewById(R.id.exerciseListAmvMenu);
+        toolbarTitle = findViewById(R.id.exerciseListTitleTV);
+
+        String title = "Chủ đề: " + FirebaseAuth.topic.getTopicName().toUpperCase();
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarTitle.setText(title);
 
         FirebaseAuth.getAllExercisesByTopicName(FirebaseAuth.topic.getTopicName(), new ValueEventListener() {
             @Override
@@ -58,5 +76,11 @@ public class ExercisesListActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        NavUtils.navigateUpFromSameTask(this);
     }
 }

@@ -5,16 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.adapters.PagerAdapter;
+import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 public class MainScreenActivity extends AppCompatActivity {
 
     private ViewPager2 viewPager2;
     private TabLayout tabLayout;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,8 @@ public class MainScreenActivity extends AppCompatActivity {
 
         viewPager2 = findViewById(R.id.pager);
         viewPager2.setAdapter(new PagerAdapter(this));
+
+
 
         tabLayout = findViewById(R.id.tab_layout);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -39,6 +47,11 @@ public class MainScreenActivity extends AppCompatActivity {
                         tab.setIcon(R.drawable.ic_book);
                         break;
                     }
+                    case 2:{
+                        tab.setText("Xếp hạng");
+                        tab.setIcon(R.drawable.ic_ranking);
+                        break;
+                    }
                     default:{
                         tab.setText("Tài khoản");
                         tab.setIcon(R.drawable.ic_account);
@@ -49,8 +62,22 @@ public class MainScreenActivity extends AppCompatActivity {
             }
         });
         tabLayoutMediator.attach();
+
+//        toolbar = findViewById(R.id.manScreenToolbar);
+//        setActionBar(toolbar);
+//
+//        TextView noteBookFragmentTitle =  toolbar.findViewById(R.id.topicFragmentNumberTitleTV);
+//        noteBookFragmentTitle.setVisibility(View.VISIBLE);
+//        noteBookFragmentTitle.setText(((Integer)FirebaseAuth.user.getWordList().size()).toString());
+//        ImageView noteBookFragmentTitleIM = toolbar.findViewById(R.id.topicFragmentTitleIM);
+//        noteBookFragmentTitleIM.setVisibility(View.VISIBLE);
     }
 
+
+    public void onAttachNoteBookFragment(){
+
+
+    }
     @Override
     public void onBackPressed() {
 

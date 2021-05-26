@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
+import com.ndtr.mylearningenglish.activities.MainScreenActivity;
 import com.ndtr.mylearningenglish.adapters.WordAdapter;
 import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 import com.ndtr.mylearningenglish.models.Word;
@@ -34,6 +35,7 @@ public class NoteBookFragment extends Fragment {
     private TextView blankTextView;
     public static List<Word> wordList;
 
+
     public NoteBookFragment(){}
 
 
@@ -42,8 +44,10 @@ public class NoteBookFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         blankTextView = view.findViewById(R.id.blankWordListTV);
         recyclerView = view.findViewById(R.id.noteBookRV);
+
         wordList = new ArrayList<>();
 
         List <String> wordIDList = FirebaseAuth.user.getWordList();
@@ -64,6 +68,7 @@ public class NoteBookFragment extends Fragment {
                             wordList.add(newWord);
                         }
                         if (wordID == wordIDList.get(wordIDList.size()-1)){
+                            FirebaseAuth.wordList = wordList;
                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                             wordAdapter = new WordAdapter(getContext() , wordList);
                             recyclerView.setAdapter(wordAdapter);

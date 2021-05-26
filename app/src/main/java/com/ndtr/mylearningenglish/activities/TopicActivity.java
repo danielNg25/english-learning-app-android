@@ -5,14 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
 
 public class TopicActivity extends AppCompatActivity {
-    TextView newWordTV;
-    TextView exerciseTV;
+    Button newWordBTN;
+    Button exerciseBTN;
     TextView topicNameTV;
     TextView topicDescriptionTV;
 
@@ -24,20 +25,20 @@ public class TopicActivity extends AppCompatActivity {
 
         topicNameTV = findViewById(R.id.topicNameTopicActTV);
         topicDescriptionTV = findViewById(R.id.topicDescriptionTopicActTV);
-        newWordTV = findViewById(R.id.newWordTopicAct);
-        exerciseTV = findViewById(R.id.exerciseTopicAct);
+        newWordBTN = findViewById(R.id.newWordTopicAct);
+        exerciseBTN = findViewById(R.id.exerciseTopicAct);
 
         topicNameTV.setText(FirebaseAuth.topic.getTopicName().toUpperCase());
         topicDescriptionTV.setText(FirebaseAuth.topic.getLongDescription());
 
-        newWordTV.setOnClickListener(new View.OnClickListener() {
+        newWordBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startNewWordActivity();
             }
         });
 
-        exerciseTV.setOnClickListener(new View.OnClickListener() {
+        exerciseBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TopicActivity.this, ExercisesListActivity.class);

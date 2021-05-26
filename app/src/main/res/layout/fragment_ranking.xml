@@ -7,7 +7,7 @@
 
 
     <LinearLayout
-        android:id="@+id/topicFragmentLL"
+        android:id="@+id/rankingFragmentLL"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
@@ -18,27 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <include layout="@layout/ranking_element"
+            android:id="@+id/myRankingCV" />
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:hint="Nhập tên topic"
-                android:textSize="24dp" />
-
-            <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/ic_search" />
-
-        </LinearLayout>
-
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/topic_rv"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:id="@+id/rankingRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

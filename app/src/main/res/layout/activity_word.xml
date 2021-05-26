@@ -1,90 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/wordActABL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/wordDetailLL">
+
+
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/wordActBackBTN"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="?attr/homeAsUpIndicator"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/wordActTitleTV"
+                    style="@style/ToolBarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Family"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+        android:id="@+id/wordDetailLL"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wordActABL">
 
-        <TextView
-            android:id="@+id/wordName"
-            style="@style/WordName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Từ" />
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/addToNoteBookBtn"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_add" />
+            <TextView
+                android:id="@+id/wordName"
+                style="@style/WordName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Từ" />
+
+            <Button
+                android:backgroundTint="@color/wrongAnswer"
+                android:id="@+id/addToNoteBookBtn"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_add" />
+
+            <TextView
+                android:id="@+id/alreadyAddedTv"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_added"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/WordCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[" />
+
+            <TextView
+                android:id="@+id/wordCategory"
+                style="@style/WordCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Từ loại" />
+
+            <TextView
+                style="@style/WordCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="]" />
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp">
+
+            <ImageView
+                android:id="@+id/wordActIV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/alreadyAddedTv"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_added"
-            android:visibility="gone" />
+            style="@style/WordActivityHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nghĩa:" />
+
+        <TextView
+            android:id="@+id/meaning"
+            style="@style/WordCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Ý nghĩa" />
+
+        <TextView
+            style="@style/WordActivityHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ví dụ:" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/exampleRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/previousItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:text="Từ trước" />
+
+            <Button
+                android:id="@+id/nextItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/button_background"
+                android:text="Từ sau" />
+        </RelativeLayout>
+
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/WordCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[" />
-
-        <TextView
-            android:id="@+id/wordCategory"
-            style="@style/WordCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Từ loại" />
-
-        <TextView
-            style="@style/WordCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="]" />
-    </LinearLayout>
-
-    <TextView
-        style="@style/WordActivityHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nghĩa:" />
-
-    <TextView
-        android:id="@+id/meaning"
-        style="@style/WordCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Ý nghĩa" />
-
-    <TextView
-        style="@style/WordActivityHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ví dụ:" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/exampleRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp" />
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

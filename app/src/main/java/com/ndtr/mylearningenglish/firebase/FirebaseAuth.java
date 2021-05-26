@@ -48,6 +48,8 @@ public class FirebaseAuth<T> {
     public static Word word;
     public static Exercise exercise;
 
+    public static List<Word> wordList;
+    public static List<User> userList;
 
 
     public static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance(dbLink);
@@ -93,6 +95,11 @@ public class FirebaseAuth<T> {
     public static void getAllTopicName(ValueEventListener valueEventListener){
         DatabaseReference topics = firebaseDatabase.getReference(TOPICS);
         topics.addValueEventListener(valueEventListener);
+    }
+
+    public static void getAllUser(ValueEventListener valueEventListener){
+        DatabaseReference users = firebaseDatabase.getReference(USERS);
+        users.addValueEventListener(valueEventListener);
     }
 
     public static void getAllWordsFromList(List<String> wordsName, ValueEventListener valueEventListener){

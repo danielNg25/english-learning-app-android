@@ -38,6 +38,14 @@ public class ExerciseListAdapter extends RecyclerView.Adapter<ExerciseListHolder
         int pos = position + 1;
         holder.exerciseNumberTextView.setText("Bài số " + pos);
 
+        if(position%2 == 0){
+
+            holder.exerciseCardView.setCardBackgroundColor(context.getResources().getColor(R.color.even_color));
+        }
+        else{
+            holder.exerciseCardView.setCardBackgroundColor(context.getResources().getColor(R.color.odd_color));
+        }
+
         holder.exerciseCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

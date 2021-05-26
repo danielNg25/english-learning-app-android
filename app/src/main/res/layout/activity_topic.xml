@@ -47,25 +47,39 @@
             android:textAlignment="center"
             android:text="Hãy cùng học các từ vựng thuộc chủ đề Gia đình nào!"/>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/newWordTopicAct"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TopicTextViewButton"
-        android:text="Học từ vựng"
-        android:layout_weight="1"
+        android:layout_height="wrap_content">
 
-        android:background="@color/topicBtn1"/>
 
-    <TextView
-        android:id="@+id/exerciseTopicAct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TopicTextViewButton"
-        android:text="Làm bài tập"
-        android:layout_weight="1"
-        android:background="@color/topicBtn2"/>
+        <Button
+            android:id="@+id/newWordTopicAct"
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_circle_blue"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/exerciseTopicAct"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/exerciseTopicAct"
+            style="@style/TopicTextViewButton"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_circle_red"
+            app:layout_constraintDimensionRatio="H, 1:1"
+            app:layout_constraintTop_toBottomOf="@id/newWordTopicAct"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>
