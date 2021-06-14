@@ -42,6 +42,7 @@ public class User {
 
     public int countExercisesScore(){
         int sum = 0;
+        if (this.exercises == null) return 0;
         for (String key: this.exercises.keySet()){
             sum += this.exercises.get(key);
         }

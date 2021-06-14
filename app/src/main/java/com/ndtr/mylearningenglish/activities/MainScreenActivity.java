@@ -2,6 +2,7 @@ package com.ndtr.mylearningenglish.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
@@ -12,9 +13,16 @@ import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.ndtr.mylearningenglish.R;
 import com.ndtr.mylearningenglish.adapters.PagerAdapter;
+import com.ndtr.mylearningenglish.adapters.RankingAdapter;
 import com.ndtr.mylearningenglish.firebase.FirebaseAuth;
+import com.ndtr.mylearningenglish.models.User;
+
+import java.util.ArrayList;
 
 public class MainScreenActivity extends AppCompatActivity {
 
@@ -30,7 +38,23 @@ public class MainScreenActivity extends AppCompatActivity {
         viewPager2 = findViewById(R.id.pager);
         viewPager2.setAdapter(new PagerAdapter(this));
 
+        FirebaseAuth.getAllUser(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                FirebaseAuth.userList = new ArrayList<>();
+                for (DataSnapshot dataSnapshotChild: dataSnapshot.getChildren()){
+                    User newUser = dataSnapshotChild.getValue(User.class);
+                    FirebaseAuth.userList.add(newUser);
+                }
 
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         tabLayout = findViewById(R.id.tab_layout);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -48,6 +72,11 @@ public class MainScreenActivity extends AppCompatActivity {
                         break;
                     }
                     case 2:{
+                        tab.setText("Chatbot");
+                        tab.setIcon(R.drawable.ic_chat);
+                        break;
+                    }
+                    case 3:{
                         tab.setText("Xếp hạng");
                         tab.setIcon(R.drawable.ic_ranking);
                         break;

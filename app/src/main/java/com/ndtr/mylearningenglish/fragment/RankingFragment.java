@@ -53,32 +53,32 @@ public class RankingFragment extends Fragment {
         myRankingScoreTextView = myRankingView.findViewById(R.id.scoreRankingElementTV);
 
         myRankingFullNameTextView.setText("Bạn:");
-        myRankingScoreTextView.setText(String.valueOf(FirebaseAuth.user.countExercisesScore()));
+        int score = 0;
+        if (FirebaseAuth.user.getExercises() == null){
+            score = 0;
+        }
+        else{
+            score = FirebaseAuth.user.countExercisesScore();
+        }
+        myRankingScoreTextView.setText(String.valueOf(score));
 
 
 
         recyclerView = view.findViewById(R.id.rankingRV);
-        FirebaseAuth.getAllUser(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshotChild: dataSnapshot.getChildren()){
-                    User newUser = dataSnapshotChild.getValue(User.class);
-                    userList.add(newUser);
-                }
-                FirebaseAuth.userList = userList;
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                rankingAdapter = new RankingAdapter(getActivity(), userList);
-                recyclerView.setAdapter(rankingAdapter);
-                recyclerView.setLayoutManager(linearLayoutManager);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        userList = FirebaseAuth.userList;
+        List<String> usernameList = new ArrayList<>();
+        for (User user: userList){
+            usernameList.add(user.getUserName());
+        }
+        //int pos = usernameList.indexOf(usernameList) + 1;
+        myRankingOrderTextView.setText("No. 2");
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        rankingAdapter = new RankingAdapter(getActivity(), userList);
+        recyclerView.setAdapter(rankingAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-            }
-        });
-//        int pos = FirebaseAuth.userList.indexOf(FirebaseAuth.user) + 1;
-//        myRankingOrderTextView.setText("No. "+ pos);
+
     }
 
     @Override

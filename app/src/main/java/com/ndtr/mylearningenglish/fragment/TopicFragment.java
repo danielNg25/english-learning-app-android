@@ -51,6 +51,7 @@ public class TopicFragment extends Fragment {
                     topicsDescription.add(dataSnapshotChild.child("shortDescription").getValue().toString());
 
                 }
+                FirebaseAuth.topicsName = topicsName;
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                 topicAdapter = new TopicAdapter(getActivity(), topicsName, topicsDescription);
                 recyclerView.setAdapter(topicAdapter);

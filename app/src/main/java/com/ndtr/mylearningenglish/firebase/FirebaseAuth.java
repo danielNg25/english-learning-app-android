@@ -48,6 +48,7 @@ public class FirebaseAuth<T> {
     public static Word word;
     public static Exercise exercise;
 
+    public static List<String> topicsName;
     public static List<Word> wordList;
     public static List<User> userList;
 

@@ -51,6 +51,7 @@ public class AccountFragment extends Fragment {
         fullNameTextView.setText(FirebaseAuth.user.getFullName());
         userNameTextView.setText(FirebaseAuth.user.getUserName());
         emailTextView.setText(FirebaseAuth.user.getEmail());
+        currentRankingTextView.setText("No. 2");
 
         noteBookCountTextView.setText(String.valueOf(FirebaseAuth.user.getWordList().size()));
         exercisesScoreTextView.setText(String.valueOf(FirebaseAuth.user.countExercisesScore()));
